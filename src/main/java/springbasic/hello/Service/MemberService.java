@@ -6,9 +6,11 @@ import springbasic.hello.domain.Member;
 import springbasic.hello.repository.MemberRepository;
 import springbasic.hello.repository.MemoryMemberRepository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 public class MemberService {
     private final MemberRepository memberRepository;
 

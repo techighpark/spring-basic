@@ -4,27 +4,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springbasic.hello.Service.MemberService;
-import springbasic.hello.repository.JDBCMemberRepository;
 import springbasic.hello.repository.MemberRepository;
-
-import javax.sql.DataSource;
 
 @Configuration
 public class SpringConfig {
-    private final DataSource dataSource;
+
+private final MemberRepository memberRepository;
 
     @Autowired
-    public SpringConfig(DataSource dataSource) {
-        this.dataSource = dataSource;
+    public SpringConfig(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
 
     @Bean
     public MemberService memberService(){
-        return new MemberService(memberRepository());
+        return new MemberService(memberRepository);
     }
-    @Bean
-    public MemberRepository memberRepository(){
-//        return new MemoryMemberRepository();
-        return new JDBCMemberRepository(dataSource);
-    }
+//    @Bean
+//    public MemberRepository memberRepository(){
+////        return new MemoryMemberRepository();
+////        return new JDBCMemberRepository(dataSource);
+////        return new JDBCTemplateMemberRepository(dataSource);
+////        return new JpaMemberRepository(em);
+//
+//    }
+
+
 }

@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public class JDBCMemberRepository implements MemberRepository{
 
-private final DataSource dataSource;
+    private final DataSource dataSource;
 
     public JDBCMemberRepository(DataSource dataSource) {
         this.dataSource = dataSource;
