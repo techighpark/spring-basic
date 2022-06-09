@@ -3,13 +3,14 @@ package springbasic.hello;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import springbasic.hello.AOP.TimeTraceAop;
 import springbasic.hello.Service.MemberService;
 import springbasic.hello.repository.MemberRepository;
 
 @Configuration
 public class SpringConfig {
 
-private final MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
 
     @Autowired
     public SpringConfig(MemberRepository memberRepository) {
@@ -17,7 +18,7 @@ private final MemberRepository memberRepository;
     }
 
     @Bean
-    public MemberService memberService(){
+    public MemberService memberService() {
         return new MemberService(memberRepository);
     }
 //    @Bean
@@ -29,5 +30,9 @@ private final MemberRepository memberRepository;
 //
 //    }
 
+    @Bean
+    public TimeTraceAop TimeTraceAop() {
+        return new TimeTraceAop();
+    }
 
 }
